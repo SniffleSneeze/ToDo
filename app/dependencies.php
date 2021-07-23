@@ -33,5 +33,9 @@ return function (ContainerBuilder $containerBuilder) {
         return $renderer;
     };
 
+    $container['dbConnection'] = \App\DbConnection\DbConnection::getConnection();
+    $container['taskModel'] = DI\Factory(\App\Factory\TaskModelFactory::class);
+    $container['displayAllTasksController'] = DI\Factory(\App\Factory\DisplayAllTasksControllerFactory::class);
+
     $containerBuilder->addDefinitions($container);
 };
