@@ -7,4 +7,6 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 return function (App $app) {
 
     $app->get('/','displayAllTasksController');
+    $app->post('/newTask','NewTaskController');
+    $app->post('/updated','MarkAsCompletedController');
 };

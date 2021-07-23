@@ -36,6 +36,8 @@ return function (ContainerBuilder $containerBuilder) {
     $container['dbConnection'] = \App\DbConnection\DbConnection::getConnection();
     $container['taskModel'] = DI\Factory(\App\Factory\TaskModelFactory::class);
     $container['displayAllTasksController'] = DI\Factory(\App\Factory\DisplayAllTasksControllerFactory::class);
+    $container['NewTaskController'] = DI\Factory(\App\Factory\NewTaskControllerFactory::class);
+    $container['MarkAsCompletedController'] = DI\Factory(\App\Factory\MarkAsCompletedControllerFactory::class);
 
     $containerBuilder->addDefinitions($container);
 };

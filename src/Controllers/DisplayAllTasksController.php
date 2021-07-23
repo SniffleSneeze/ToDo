@@ -22,7 +22,18 @@ class DisplayAllTasksController extends Controller
     public function __invoke($request, $response, $args)
     {
         $tasks = $this->model->getAllTasks();
-        return $this->renderer->render($response,"index.php",['tasks'=>$tasks]);
+        $sortedTask = $this->sortTask($tasks);
+        return $this->renderer->render($response,"index.php",['tasks'=>$sortedTask]);
+    }
+
+    private function sortTask(array $tasks): array
+    {
+        $uncompleted = [];
+        $completed = [];
+        foreach($tasks as $task) {
+            $task['completed'] ? array_push($completed,$task) : array_push($uncompleted,$task);
+        }
+        return [$completed ,$uncompleted];
     }
 
 
